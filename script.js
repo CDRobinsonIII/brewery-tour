@@ -1,0 +1,1 @@
+$("#brewerymap") = array.length;
