@@ -1,0 +1,17 @@
+#map {
+  height: 400px;
+  margin-right: 400px;
+}
+
+
+#right-panel {
+  height: 400px;
+  float: right;
+  width: 390px;
+  overflow: auto;
+  font-family: "Roboto", "sans-serif";
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+
