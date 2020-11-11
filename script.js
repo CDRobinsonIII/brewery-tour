@@ -100,7 +100,9 @@ $(document).ready(function () {
               var whatCity = $("#city").val();
               console.log("The city typed in is: " + whatCity);
               // Call getBreweryList function to get list of breweries based off of id search
-              getBre  e.log("*********before the for loop: " + breweryList.length);
+              getBreweryList()// *** this function must return a promise then you do .then(() => {wrap the code here})
+                console.log(breweryList)
+                console.log("*********before the for loop: " + breweryList.length);
         
               for (i = 0; i < 10; i++) {
                 breweryBtn = $("<button>");
