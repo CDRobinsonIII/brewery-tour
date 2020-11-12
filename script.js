@@ -1,10 +1,9 @@
-$(document).ready(function () {
 
   // Global variable to hold available breweries to generate brewery information divs so user and pick the ones they want to visit.
   var breweryList = [];
 
   // Global variable to hold indexes of the breweries the user wants to visit.
-  var breweryTourList = [3, 9, 14];
+  var breweryTourList = [];
 
   // Global variable to hold way points for the Google directions API call. 
   var wayPointsArray = [];
@@ -35,12 +34,6 @@ $(document).ready(function () {
         // Create a for loop to go through the array and pick the breweries that have lat and lng details. 
         for (i = 0; i < response.length; i++) {
 
-          // console.log("The brewery's name is: " + response[i].name);
-          // console.log("The latitude is: " + response[i].latitude);
-          // console.log("The longitude is: " + response[i].longitude);
-          // console.log("The postal code is: " + response[i].postal_code);
-          // console.log("The street address is: " + response[i].street);
-
           //Declare variables for each brewery. 
           var breweryName = response[i].name;
           var breweryLat = response[i].latitude;
@@ -53,18 +46,6 @@ $(document).ready(function () {
           var breweryPhone = response[i].phone;
           var breweryWebsite = response[i].website_url;
           var breweryIndex = i;
-
-          // console.log(breweryName);
-          // console.log(breweryLat);
-          // console.log(breweryLng);
-          // console.log(breweryLatLng);
-          // console.log(breweryStreet);
-          // console.log(breweryCity);
-          // console.log(breweryState);
-          // console.log(breweryPostalCode);
-          // console.log(breweryPhone);
-          // console.log(breweryWebsite);
-          // console.log(breweryIndex);
 
           // If brewery has lat and lng coordinates (not null) then add their details (as an object) to the breweryList array. 
           if (breweryLat !== null) {
@@ -81,77 +62,29 @@ $(document).ready(function () {
               website: breweryWebsite,
               indexInArray: breweryIndex
             };
+
             // Push brewery object to the breweryList array.
             breweryList.push(addBreweryToList);
           }
 
         }
 
-        console.log("Array length after push all breweries: " + breweryList.length);
-        console.log(breweryList[3].name);
-
       });
     }
-            
-
-  // This will be used to build the wayPointsArray list. 
-  // When user clicks on add to tour we grab the object details and add the index to the brewery tour list. 
-  function addBreweryToTour() {
-
-    // Using jQuery/DOM grab the brewery that the user wants to add to their tour.
-    // Add the index of the brewery to the array for access later to generate Google maps info windows.
-    var breweryIndexToAdd = $(this).indexInArray;
-    breweryTourList.push(breweryIndexToAdd);
-
-    // Add lat and lng of brewery to the way points array. 
-    var breweryLatLngToAdd = $(this).latlng;
-    addBreweryToList = {
-      location: breweryLatLngToAdd,
-      stopover: true
-    };
-
-    wayPointsArray.push(addBreweryToList);
-
-    // This code is in case we want to try to add breweries without lat and lng details. If we have time we can add.
-    // If we decide to implement this we will have to modify the if statement in the getBreweryList function, because it doesn't add breweries without lat & lng.
-    //   else if ((breweryLat === null) & (breweryPostalCode !== null)) {
-    //     console.log("There are no coordnates but there is a postal code!");
-    //     addBreweryToList = {
-    //     location: breweryName+" "+breweryPostalCode,
-    //     stopover: true
-    //   };
-
-    //   breweryList.push(addBreweryToList);
-
-
-    //   console.log("The brewery list to display on map is this long: " + breweryList.length);
-    //   console.log(breweryList);
-    // }
-
-  }
 
   // This is a test function to see if code works before merging. Delete after confirming.
-  function addBreweryToTourTest() {
+  function addBreweriesToTourToWayPointArray(event) {
 
-    console.log(breweryList);
-
-    console.log("2 Array length after push all breweries: " + breweryList.length);
+    event.preventDefault();
 
     for (i = 0; i < breweryTourList.length; i++) {
-      // Using jQuery/DOM grab the brewery that the user wants to add to their tour.
-      // Add the index of the brewery to the array for access later to generate Google maps info windows.
 
-      console.log(breweryList);
-      console.log("yo " + breweryList.length);
+      // Add the breweries that the user wants to visit to the way points array so they can be rendered on the map.
 
       var getIndex = breweryTourList[i];
-      console.log("Index = " + getIndex);
-      console.log("hello " + breweryList.length);
-      // console.log("Index = "+brewery);
-
-
+     
       // Add lat and lng of brewery to the way points array. 
-      var breweryLatLngToAdd = breweryList[3].latlng;
+      var breweryLatLngToAdd = breweryList[getIndex].latlng;
       addBreweryToList = {
         location: breweryLatLngToAdd,
         stopover: true
@@ -160,30 +93,17 @@ $(document).ready(function () {
       wayPointsArray.push(addBreweryToList);
 
     }
+    $("#map").css("display","block");
+    $("#right-panel").css("display","block");
+    $(".title").css("display","block");
+    $("#dbrewerieslist").css("display","none");
+    $("#breweryDetails").css("display","none");
+    $("#breweryTourList").css("display","none");
+
+    breweryTourList
+
+    initMap();
   }
-
-  // var wayPointsArray = [        
-  //   {
-  //     location: 'Los Anageles, CA',
-  //     stopover: true
-  //   },{
-  //     location: 'Solvang, CA',
-  //     stopover: true
-  //   },{
-  //     location: 'Irvine, CA',
-  //     stopover: true
-  //   },{
-  //     location: '32.8908008085346,-117.151828378447',
-  //     stopover: true
-  //   },{
-  //     location: 'Ballast Point Brewing Co 92110-2402',
-  //     stopover: true
-  //   },{
-  //     location: '9990 Alesmith Ct',
-  //     stopover: true
-  //   }
-  // ]
-
 
   function initMap() {
     const laMesa = { lat: 32.772404, lng: -117.029327 };
@@ -210,13 +130,14 @@ $(document).ready(function () {
   }
 
   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
-    console.log("This is what the wayPointsArray looks like:");
-    // console.log("Hello"+wayPointsArray);
+   
+    var startAndEnd = breweryList[0].latlng;
+
     directionsService.route(
 
       {
-        origin: { lat: 32.772404, lng: -117.029327 },
-        destination: { lat: 32.772404, lng: -117.029327 },
+        origin: startAndEnd,
+        destination: startAndEnd,
         // Note that Javascript allows us to access the constant
         // using square brackets and a string value as its
         // "property."
@@ -234,13 +155,22 @@ $(document).ready(function () {
     );
   }
 
-function testAddToTourButton (event) {
+function addToBreweryTastingList (event) {
+
   event.preventDefault();
-  alert("The brewery add to tour button is working!");
+
+  // Get the index of the brewery that the user added to the brewery tasting map.
   var addBreweryNameToTour = event.target.id;
+
+  // Create a li tag to attach the name of the brewery that the user wants to add to the brewery tasting map. 
   var addLi = $("<li>").text(breweryList[addBreweryNameToTour].name);
 
+  // Append li tag with the brewery name to the div with the breweryTourList Id.
   $("#breweryTourList").append(addLi);
+
+  // Push the index of the brewery that the user wants to add to the brewery tasting map to the breweryTourList array.
+  // This will be used by the map API functions to access breweries the user wants to visit.
+  breweryTourList.push(addBreweryNameToTour);
 }
 
 function displayBreweryDetails(event) {
@@ -264,15 +194,14 @@ function displayBreweryDetails(event) {
   var breweryPhone = $("<p>").text(phoneDisplay);
   var breweryWebsite = $("<p>").text(websiteDisplay);
 
-  var addToTourButton = $("<button>").addClass("btn btn-success").text("Add to Tour").attr("id",breweryDisplayId).on("click",testAddToTourButton);
+  var addToTourButton = $("<button>").addClass("btn btn-success").text("Add to Tour").attr("id",breweryDisplayId).on("click",addToBreweryTastingList);
 
   $("#breweryDetails").append(header,breweryName,breweryLocation,breweryPhone,breweryWebsite,addToTourButton);
   console.log(breweryWebsite);
-}
+  
+  $("#breweryTourList").css("display","block");
 
-  // getBreweryList();
-  // addBreweryToTourTest();
-  // initMap();
+}
 
 
   $("#search").on("click", function (c) {
@@ -296,6 +225,8 @@ function displayBreweryDetails(event) {
         // initMap();
       }
     }, 500);
+
+    $("#generateMap").on("click",addBreweriesToTourToWayPointArray);
       
     
     // var coll = $(".collapsible");
@@ -340,4 +271,4 @@ function displayBreweryDetails(event) {
   //Collapse Function
   
 
-});
+

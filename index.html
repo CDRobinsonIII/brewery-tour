@@ -11,17 +11,18 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=" key goes inside these quotes - remove quotes after pasting key in here "&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script> -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key="Remember to add key in here - delete quotes"&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
     <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
 
     <!-- <link
     rel="stylesheet" 
+    
     type="text/css" 
     href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
 
@@ -46,7 +47,7 @@
         <div class="row">
             
             <!-- Breweries to choose from displayed on the left. -->
-            <div class="col-sm-6  mt-4 bg-dark rounded text-light ml-6" id="dbrewerieslist">
+            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6" id="dbrewerieslist">
             </div>
 
             <!-- Brewery details displayed on the right. -->
@@ -55,20 +56,25 @@
 
         <div class="row">
             
-            <!-- Breweries to choose from displayed on the left. -->
-            <div class="col-sm-6  mt-4 bg-dark rounded text-light ml-6 float-right">
+            <!-- Brewery tasting tour list. -->
+            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6 float-right" id="breweryTourList">
                 <h1>Brewery Tasting Tour List</h1>
+                <button class="btn btn-warning" id="generateMap">Generate Map</button>
                 <ul id="breweryTourList">
                 </ul>
             </div>
         </div>
+    </div>
 
-            <!-- <div>
-                <div id="right-panel">Direction Panel</div>
-                <div id="map">Direction Panel</div>
-
-            </div> -->
-
+    <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 m-0 p-0 rounded text-light">
+                <div id="map"></div>
+            </div>
+            <div class="col-sm-3 m-0 p-0 rounded text-light">
+                <div id="right-panel"></div>
+            </div>
         </div>
     </div>
     <!-- 5 display box with Name, Address, tel,email -->
@@ -76,7 +82,7 @@
     <!-- Container for maps -->
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
 
     <!-- Footer Tag -->
