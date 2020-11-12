@@ -67,12 +67,18 @@ p{
     opacity: 70%;
 }
 
+/* Possibly delete this one. */
 #dmap{
     display: none;
     color: ivory;
     background-image: url(https://i.ytimg.com/vi/fOQRn1Spopc/maxresdefault.jpg);
     opacity: 70%;
 }
+
+#breweryDetails {
+    display: block;
+}
+
 
 #imgmap{
     margin-bottom: 24px;
