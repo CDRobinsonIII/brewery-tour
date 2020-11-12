@@ -174,9 +174,6 @@ function addBreweryToTourTest() {
 
   console.log(breweryList);
 
-<<<<<<< HEAD
-  console.log("2 Array length after push all breweries: " + breweryList.length);
-=======
       });
     }
             
@@ -184,7 +181,6 @@ function addBreweryToTourTest() {
   // This will be used to build the wayPointsArray list. 
   // When user clicks on add to tour we grab the object details and add the index to the brewery tour list. 
   function addBreweryToTour() {
->>>>>>> 7dda0ca1670dc26afbfb9b1217a8c3fac912608a
 
   for (i = 0; i < breweryTourList.length; i++) {
     // Using jQuery/DOM grab the brewery that the user wants to add to their tour.
@@ -288,10 +284,6 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 // initMap();
 
 
-<<<<<<< HEAD
-// Create an on click event for when user enters a city in the search box. Call function getBreweryList to generate available breweries.
-// $("#cityBrewerySearch").on("click", getBreweryList);
-=======
 function breweryButtonsWorking (event) {
   event.preventDefault();
   var breweryClickedOn = event.target.id;
@@ -301,15 +293,10 @@ function breweryButtonsWorking (event) {
   // getBreweryList();
   // addBreweryToTourTest();
   // initMap();
->>>>>>> 7dda0ca1670dc26afbfb9b1217a8c3fac912608a
 
 // // Create an on click event for when user wants to add a brewery to their tour. Call function addBreweryToTour to push selected brewery to tour list.
 // $("#addToTour").on("click", addBreweryToTour);
 
-<<<<<<< HEAD
-// // Create an on click event for when user wants to generate their tour of the breweries. Call function "         " to generate the map.
-// $("#addToTour").on("click", initMap);
-=======
   $("#search").on("click", function (c) {
     c.preventDefault();
     $(".title").slideUp();
@@ -356,7 +343,6 @@ function breweryButtonsWorking (event) {
 
   // Create an on click event for when user enters a city in the search box. Call function getBreweryList to generate available breweries.
   // $("#cityBrewerySearch").on("click", getBreweryList);
->>>>>>> 7dda0ca1670dc26afbfb9b1217a8c3fac912608a
 
 
 //City Validation use of promise or any other HTML validation call
