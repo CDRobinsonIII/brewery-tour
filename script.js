@@ -234,10 +234,40 @@ $(document).ready(function () {
     );
   }
 
-function breweryButtonsWorking (event) {
+function testAddToTourButton (event) {
   event.preventDefault();
-  var breweryClickedOn = event.target.id;
-  alert("The brewery info buttons are working! "+breweryList[breweryClickedOn].name);
+  alert("The brewery add to tour button is working!");
+  var addBreweryNameToTour = event.target.id;
+  var addLi = $("<li>").text(breweryList[addBreweryNameToTour].name);
+
+  $("#breweryTourList").append(addLi);
+}
+
+function displayBreweryDetails(event) {
+  event.preventDefault();
+  $("#breweryDetails").text("");
+  var breweryDisplayId = event.target.id;
+
+  // breweryDetailsDiv = $("<div>"); figure out what to do with this.
+  var nameDisplay = breweryList[breweryDisplayId].name;
+  var streetDisplay = breweryList[breweryDisplayId].street;
+  var cityDisplay = breweryList[breweryDisplayId].city;
+  var stateDisplay = breweryList[breweryDisplayId].state;
+  var postalCodeDisplay = breweryList[breweryDisplayId].zipCode;
+  var phoneDisplay = breweryList[breweryDisplayId].phone;
+  var websiteDisplay = breweryList[breweryDisplayId].website;
+  var breweryAddress = (streetDisplay+"; "+cityDisplay+"; "+stateDisplay+"; "+postalCodeDisplay);
+
+  var header = $("<h1>").text("Brewery Details");
+  var breweryName = $("<p>").text(nameDisplay);
+  var breweryLocation = $("<p>").text(breweryAddress);
+  var breweryPhone = $("<p>").text(phoneDisplay);
+  var breweryWebsite = $("<p>").text(websiteDisplay);
+
+  var addToTourButton = $("<button>").addClass("btn btn-success").text("Add to Tour").attr("id",breweryDisplayId).on("click",testAddToTourButton);
+
+  $("#breweryDetails").append(header,breweryName,breweryLocation,breweryPhone,breweryWebsite,addToTourButton);
+  console.log(breweryWebsite);
 }
 
   // getBreweryList();
@@ -260,7 +290,7 @@ function breweryButtonsWorking (event) {
         breweryBtn = $("<button>");
         breweryNameToAdd = breweryList[i].name;
         // var breweryArrayName=breweryList[i].name;
-        var breweryName = breweryBtn.addClass("collapsible m-2 rounded").text(breweryNameToAdd).attr("id", `${i}`).on("click", breweryButtonsWorking);
+        var breweryName = breweryBtn.addClass("collapsible m-2 rounded").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
         $("#dbrewerieslist").append(breweryName);
         // addBreweryToTourTest();
         // initMap();
