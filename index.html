@@ -26,95 +26,53 @@
 
 <body>
     <!--Jumbotron for Title-->
-    <div class="jumbotron container mt-4 text-center p-2 title">
-        <h1> <strong>Brewery Quest&smile; </strong></h1>
+    <div class=" container mt-4 text-center p-2 title">
+        <h1> <strong>Brewery Quest</strong></h1>
         <p><strong>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
                 Enter the city where you would like to find breweries to visit.
                 Pick from the breweries generated and add them to your map.
                 Lastly, send the directions to your designated driver and wait for your ridde to arrive.</strong></p>
-
-        <input type="text" placeholder="Input City" id="city" class="input-inline p-1 rounded">
-        <button class="btn-inline p-1 bg-secondary rounded" type="button" id="search">Lets Go!</button>
+        
+        <input type="text" placeholder="Input City" id="city" class="input">
+        <button type="button" id="search">Lets Go!</button>
 
     </div>
     <!-- container for search breweries -->
-    <div class="container clear-fix">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-6  mt-4 bg-dark rounded text-light ml-6" id="dbrewerieslist">
-                    <!-- <>Breweries found:</h2> -->
-             
-                <!-- <button class="collapsible mb-2 bg-primary rounded" id="dbreweries"><p>Brewerie:[Name]</p></button>
-                <div class="content">
-                    x`
-                    
-                        <p id ="bname0">Name: </p>
-                        <p id ="baddress0">Address:</p>
-                        <p id = "btel0">Tel.#:</p>
-                        <p id ="website0">Website:</p>
-                    
-                </div>
-                <button class="collapsible mb-2 rounded" id="dbreweries"><p>Brewerie:[Name]</p></button>
-                <div class="content">
-                
-                    <p id ="bname1">Name: </p>
-                    <p id ="baddress1">Address:</p>
-                    <p id = "btel1">Tel.#:</p>
-                    <p id ="website1">Website:</p>
-                </div>
-
-                <button class="collapsible mb-2 rounded" id="dbreweries"><p>Brewerie:[Name]</p></button>
-                <div class="content">
-                    <p id ="bname2">Name: </p>
-                    <p id ="baddress2">Address:</p>
-                    <p id = "btel2">Tel.#:</p>
-                    <p id ="website2">Website:</p>
-                </div>
-
-                <button class="collapsible mb-2 rounded" id="dbreweries"><p>Brewerie:[Name]</p></button>
-                <div class="content">
-                    <p id ="bname3">Name: </p>
-                    <p id ="baddress3">Address:</p>
-                    <p id = "btel3">Tel.#:</p>
-                    <p id ="website3">Website:</p>
-                </div>
-
-                <button class="collapsible mb-2 rounded" id="dbreweries"><p>Brewerie:[Name]</p></button>
-                <div class="content">
-                    <p id ="bname4">Name: </p>
-                    <p id ="baddress4">Address:</p>
-                    <p id = "btel4">Tel.#:</p>
-                    <p id ="website4">Website:</p>
-                </div> -->
-
+            <div class="col" id="dbrewerieslist">
+                <h2>Breweries found:</h2>
             <!-- Brewery details displayed on the right. -->
-            <div class="col-sm-6 mt-4 bg-dark rounded p-6 text-center" id="breweryDetails">                
-            </div>
-
-        <div class="row">
-            
+            <div class="col" id="breweryDetails"></div>
+           
             <!-- Brewery tasting tour list. -->
-            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6 float-right" id="breweryTourListDiv">
+            <div class="col" id="breweryTourListDiv" >
                 <h1>Brewery Tasting Tour List</h1>
                 <ul id="breweryTourList">
                 </ul>
                 <button class="btn btn-warning" id="generateMap">Generate Map</button>
             </div>
-        </div>
+            
+          
+    </div>
     </div>
 
     <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-9 m-0 p-0 rounded text-light">
-                <div id="map"></div>
-            </div>
-            <div class="col-sm-3 m-0 p-0 rounded text-light">
-                <div id="right-panel"></div>
-            </div>
-        </div>
-    </div>
+     <div class="container"> 
+        
+         <div class="row"> 
+             <div class="col" id="map"> 
+                <p>Map Display</p>
+                <label class="" id="right-panel">Right Panel</label>  
+                
+                
+             </div> 
+               
+     </div> 
+     
+ </div> 
     <!-- 5 display box with Name, Address, tel,email -->
-
+             
     <!-- Container for maps -->
 
 
