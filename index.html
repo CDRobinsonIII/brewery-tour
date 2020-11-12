@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Mobile -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" 
-    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" 
-    crossorigin="anonymous">
 
-    
+    <!-- Font links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./style.css">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-
-    <!-- <link
-    rel="stylesheet" 
-    type="text/css" 
-    href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
+    <!-- Ajax Link -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- Google API Link -->
+    <script
+      ssrc="https://maps.googleapis.com/maps/api/js?key="Remember to add key in here - delete quotes"&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <!-- CSS Link -->
+    <link rel="stylesheet" href="./style.css">
     
+
     <title>Brewery Tour</title>
 </head>
-<body >
-      <!--Jumbotron for Title-->
-      <div class="jumbotron container mt-4 text-center p-2 title">
+
+<body>
+    <!--Jumbotron for Title-->
+    <div class="jumbotron container mt-4 text-center p-2 title">
         <h1> <strong>Brewery Quest&smile; </strong></h1>
         <p><strong>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
-            Enter the city where you would like to find breweries to visit.
-            Pick from the breweries generated and add them to your map.
-            Lastly, send the directions to your designated driver and wait for your ridde to arrive.</strong></p>
+                Enter the city where you would like to find breweries to visit.
+                Pick from the breweries generated and add them to your map.
+                Lastly, send the directions to your designated driver and wait for your ridde to arrive.</strong></p>
 
-            <input type="text" placeholder="Input City" id="city" class="input-inline p-1 rounded">
-            <button class="btn-inline p-1 bg-secondary rounded" type="button" id="search">Lets Go!</button>
- 
-        </div>   
+        <input type="text" placeholder="Input City" id="city" class="input-inline p-1 rounded">
+        <button class="btn-inline p-1 bg-secondary rounded" type="button" id="search">Lets Go!</button>
+
     </div>
     <!-- container for search breweries -->
     <div class="container clear-fix">
@@ -90,41 +86,57 @@
                     <p id ="website4">Website:</p>
                 </div> -->
 
+            <!-- Brewery details displayed on the right. -->
+            <div class="col-sm-6 mt-4 bg-dark rounded p-6 text-center" id="breweryDetails">                
             </div>
 
+        <div class="row">
             
-            <!-- Map Display -->
-            <div class="col-sm-6 mt-4 bg-dark rounded p-6" id="dmap">
-                <h2>Display Map:</h2>
-                <img class="image rounded"  src="https://www.google.com/maps/d/thumbnail?mid=1GC-26pGg4Z58eto8mukpi6dyUj4&hl=en" id="map">
-                <div id="right-panel">Direction Panel</div>
+            <!-- Brewery tasting tour list. -->
+            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6 float-right" id="breweryTourListDiv">
+                <h1>Brewery Tasting Tour List</h1>
+                <ul id="breweryTourList">
+                </ul>
+                <button class="btn btn-warning" id="generateMap">Generate Map</button>
             </div>
-            
+        </div>
+    </div>
+
+    <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 m-0 p-0 rounded text-light">
+                <div id="map"></div>
+            </div>
+            <div class="col-sm-3 m-0 p-0 rounded text-light">
+                <div id="right-panel"></div>
+            </div>
         </div>
     </div>
     <!-- 5 display box with Name, Address, tel,email -->
-  
+
     <!-- Container for maps -->
-    
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
 
-<!-- Footer Tag -->
+    <!-- Footer Tag -->
 
     <!-- <footer class="row"> -->
-      <!-- <br><br> -->
-      <!-- <img class="img-thumbnail rounded float-left" id="logos" src="https://graphicriver.img.customer.envatousercontent.com/files/249430575/preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=c4f3e92d9855c76431854f18289e2113"> -->
-      <!-- <img  class="img-thumbnail" id="logos"  src="https://6ammarketing.com/sites/6ammarketing.com/assets/images/capital/capital-logo.png"> -->
-      <!-- <img class="img-thumbnail" id="logos" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMUBCEI98dQgIFW2ZcSUY7XfKAzmPh_7ta2w&usqp=CAU"> -->
-     <!-- <img class="img-thumbnail" id="logos" src ="https://img.icons8.com/color/48/000000/google-maps.png"> -->
+    <!-- <br><br> -->
+    <!-- <img class="img-thumbnail rounded float-left" id="logos" src="https://graphicriver.img.customer.envatousercontent.com/files/249430575/preview.jpg?auto=compress%2Cformat&q=80&fit=crop&crop=top&max-h=8000&max-w=590&s=c4f3e92d9855c76431854f18289e2113"> -->
+    <!-- <img  class="img-thumbnail" id="logos"  src="https://6ammarketing.com/sites/6ammarketing.com/assets/images/capital/capital-logo.png"> -->
+    <!-- <img class="img-thumbnail" id="logos" src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMUBCEI98dQgIFW2ZcSUY7XfKAzmPh_7ta2w&usqp=CAU"> -->
+    <!-- <img class="img-thumbnail" id="logos" src ="https://img.icons8.com/color/48/000000/google-maps.png"> -->
     <!-- </footer> -->
 
 </body>
 <!-- <footer class="mt-5 p-3 footer text-center bg-light"> -->
-    <!-- Brewery Guide Tour &copy 2020 -->
-   
- 
-   
+<!-- Brewery Guide Tour &copy 2020 -->
+
+
+
 </footer>
+
 </html>
