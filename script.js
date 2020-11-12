@@ -4,7 +4,7 @@ $(document).ready(function () {
   var breweryList = [];
 
   // Global variable to hold indexes of the breweries the user wants to visit.
-  var breweryTourList = [3, 9, 14];
+  var breweryTourList = [];
 
   // Global variable to hold way points for the Google directions API call. 
   var wayPointsArray = [];
@@ -234,13 +234,22 @@ $(document).ready(function () {
     );
   }
 
-function testAddToTourButton (event) {
+function addToBreweryTastingList (event) {
+
   event.preventDefault();
-  alert("The brewery add to tour button is working!");
+
+  // Get the index of the brewery that the user added to the brewery tasting map.
   var addBreweryNameToTour = event.target.id;
+
+  // Create a li tag to attach the name of the brewery that the user wants to add to the brewery tasting map. 
   var addLi = $("<li>").text(breweryList[addBreweryNameToTour].name);
 
+  // Append li tag with the brewery name to the div with the breweryTourList Id.
   $("#breweryTourList").append(addLi);
+
+  // Push the index of the brewery that the user wants to add to the brewery tasting map to the breweryTourList array.
+  // This will be used by the map API functions to access breweries the user wants to visit.
+  breweryTourList.push(addBreweryNameToTour);
 }
 
 function displayBreweryDetails(event) {
@@ -264,7 +273,7 @@ function displayBreweryDetails(event) {
   var breweryPhone = $("<p>").text(phoneDisplay);
   var breweryWebsite = $("<p>").text(websiteDisplay);
 
-  var addToTourButton = $("<button>").addClass("btn btn-success").text("Add to Tour").attr("id",breweryDisplayId).on("click",testAddToTourButton);
+  var addToTourButton = $("<button>").addClass("btn btn-success").text("Add to Tour").attr("id",breweryDisplayId).on("click",addToBreweryTastingList);
 
   $("#breweryDetails").append(header,breweryName,breweryLocation,breweryPhone,breweryWebsite,addToTourButton);
   console.log(breweryWebsite);
