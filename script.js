@@ -199,7 +199,7 @@ function displayBreweryDetails(event) {
   $("#breweryDetails").append(header,breweryName,breweryLocation,breweryPhone,breweryWebsite,addToTourButton);
   console.log(breweryWebsite);
   
-  $("#breweryTourList").css("display","block");
+  $("#breweryTourListDiv").css("display","block");
 
 }
 
