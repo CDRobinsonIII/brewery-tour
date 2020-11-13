@@ -16,7 +16,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- Google API Link -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key="paste key in between here and delete quotes around it"&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <!-- CSS Link -->
@@ -30,12 +30,12 @@
 
     <!--Jumbotron for Title-->
     <div class="title">
-        <h1> <strong>Brew Bro's Tour</strong></h1>
-        <p><strong>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
-                Enter the city where you would like to find breweries to visit.
-                Pick from the breweries generated and add them to your map.
-                Lastly, send the directions to your designated driver and wait for your ride to arrive.</strong></p>
-        
+        <h1>Brew Bro's Tour</h1>
+        <p>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
+            <br>Enter the city where you would like to find breweries to visit.
+            <br>Pick from the list of breweries generated and add the ones you like to your tasting map.
+            <br>Lastly, send the directions to your designated driver and wait for your ride to arrive.
+        </p>
         <input type="text" placeholder="Input City" id="city" class="input">
         <button type="button" id="search">Lets Go!</button>
     </div>
@@ -50,7 +50,7 @@
            
             <!-- Brewery tasting tour list. -->
             <div class="col" id="breweryTourListDiv" >
-                <h3>Brewery Tasting Tour List</h3>
+                <h1>Brewery Tasting Tour List</h3>
                 <ul id="breweryTourList">
                 </ul>
                 <button class="btn btn-warning" id="generateMap">Generate Map</button>

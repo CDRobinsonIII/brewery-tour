@@ -3,17 +3,34 @@
 body{
     
     /* background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg); */
-    font-family: 'Xanh Mono', monospace;
-   
+    font-family: 'Xanh Mono', monospace;   
     background-color: rgb(48, 43, 43);
 }
 
 
-h1{
+.title h1 {
     text-align: center;
-    color: rgb(24, 23, 23);
-    font-family: 'Great Vibes', cursive
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 78px;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
 
+.title p {
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    opacity: 75%;
+    border-radius: 2rem;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(59, 50, 50);
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
 }
 
 p{
@@ -25,23 +42,22 @@ p{
 }
 
 
-.title{
+.title {
     background-image: url(https://images.squarespace-cdn.com/content/v1/5bec5a8c1137a6f21d746907/1579636828420-1FL2XG6ERYZ95D7NCLHF/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/kunstler%2Bbrewing-10.jpg?format=2500w); 
     opacity: 80%;
-    position: absolute;
-    left: calc(18vw - 100px);
-    top:calc(35vh - 100px);
-    margin-right: 150px;
-    padding: 5%;
+    position: center;
+    margin-top: 150px;
+    padding: 2%;
     border-radius:1rem;
+    width:96%;
+    text-align: center;
 }
 
 
-#city{
-    opacity: 80%;
+#city {
+    opacity: 75%;
     text-align: center;
     width: auto;
-    margin-left: 25%;
 }
 
 #search{
@@ -53,7 +69,10 @@ p{
     background-color: rgb(0, 0, 0);
     color: whitesmoke;
     cursor: pointer;
-    padding: 1%;
+    padding: 0.5%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 #search:hover{
@@ -148,6 +167,7 @@ p{
       
       
   }
+
 button{
     
     border-radius: 10rem;
@@ -218,12 +238,12 @@ button{
       background-color: white;
 
   }
-
   #mapSection {
       display:none;
   }
-  input{
+
+  input {
       border-radius: 1rem;
-      padding: 1%;
+      padding: 13px;;
   }
 
