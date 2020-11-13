@@ -1,6 +1,7 @@
   // Global variable to hold available breweries to generate brewery information divs so user and pick the ones they want to visit.
   var breweryList = [];
 
+  // Global variable to track number of breweries on tour list. 
   var numberOfBreweriesInTour = 0;
 
   // Global variable to hold indexes of the breweries the user wants to visit.
@@ -292,6 +293,10 @@ function addToBreweryTastingList (event) {
 
   // Get the index of the brewery that the user added to the brewery tasting map.
   var addBreweryNameToTour = event.target.id;
+
+  if ($.inArray(addBreweryNameToTour, breweryTourList) > -1 ) {
+    return
+  }
 
   // Create a li tag to attach the name of the brewery that the user wants to add to the brewery tasting map. 
   var addLi = $("<li>").text(breweryList[addBreweryNameToTour].name);

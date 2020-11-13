@@ -1,3 +1,5 @@
+
+
 body{
     
     /* background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg); */
@@ -20,7 +22,6 @@ p{
     background-color: rgb(0, 0, 0);
     opacity: 75%;
     border-radius: 4rem;
-    
 }
 
 
@@ -28,7 +29,7 @@ p{
     background-image: url(https://images.squarespace-cdn.com/content/v1/5bec5a8c1137a6f21d746907/1579636828420-1FL2XG6ERYZ95D7NCLHF/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/kunstler%2Bbrewing-10.jpg?format=2500w); 
     opacity: 80%;
     position: absolute;
-    left: calc(20vw - 100px);
+    left: calc(18vw - 100px);
     top:calc(35vh - 100px);
     margin-right: 150px;
     padding: 5%;
@@ -52,6 +53,7 @@ p{
     background-color: rgb(0, 0, 0);
     color: whitesmoke;
     cursor: pointer;
+    padding: 1%;
 }
 
 #search:hover{
@@ -79,7 +81,6 @@ p{
     background-color: rgb(48, 43, 43);
     border-radius: 30%;
     margin-top: 24px;
-    
 }
 
 /* Possibly delete this one. */
@@ -221,5 +222,6 @@ button{
   }
   input{
       border-radius: 1rem;
+      padding: 1%;
   }
 
