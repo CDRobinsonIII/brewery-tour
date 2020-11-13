@@ -143,7 +143,7 @@ button{
     background-color: #6d6a6a;
   }
 
-  #map {
+  #mapSection {
     background-color: white;
     color: black;
     height: 600px;
@@ -151,7 +151,7 @@ button{
     width: 70%;
     margin: 0;
     float: left;
-    display:none;
+    
   }
   #right-panel {
     display: flex;
@@ -160,12 +160,9 @@ button{
     height: 600px;
     width:28%;
     overflow: auto;
-<<<<<<< HEAD
     font-family: 'Xanh Mono', monospace;
     margin-right: 24px;
-=======
     font-family: 'Xanh Mono', monospace;    
->>>>>>> 379cf1736b482c18079c537e233a565264ba7e7c
     border:solid;
     margin: 0;
   }
