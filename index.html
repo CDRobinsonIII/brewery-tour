@@ -16,14 +16,14 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- Google API Link -->
     <script
-        src="https://maps.googleapis.com/maps/api/js?key="paste key in between here and delete quotes around it"&callback=initMap&libraries=&v=weekly"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
         defer
     ></script>
     <!-- CSS Link -->
     <link rel="stylesheet" href="./style.css">
     
 
-    <title>Brewery Tour</title>
+    <title>Brewery Tasting Tour</title>
 </head>
 
 <body>
@@ -31,39 +31,44 @@
     <!--Jumbotron for Title-->
     <div class="title">
         <h1>Brew Bro's Tour</h1>
-        <p>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
-            <br>Enter the city where you would like to find breweries to visit.
-            <br>Pick from the list of breweries generated and add the ones you like to your tasting map.
-            <br>Lastly, send the directions to your designated driver and wait for your ride to arrive.
-        </p>
+        <div class = "companyDetails">
+            <p>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.</p>
+            <p>Enter the city where you would like to find breweries to visit.</p>
+            <p>Pick from the list of breweries generated and add the ones you like to your tasting map.</p>
+            <p>Lastly, send the directions to your designated driver and wait for your ride to arrive.</p>
+        </div>
         <input type="text" placeholder="Input City" id="city" class="input">
         <button type="button" id="search">Lets Go!</button>
     </div>
 
-    <!-- container for search breweries -->
-    <div class="container">
-        <div>
-            <div class="col" id="dbrewerieslist">
-                <h2>Click on the brewery buttons for more details. Add up to 5 different breweries to your brewery tasting tour list.</h2>
-            <!-- Brewery details displayed on the left. -->
-            <div class="col" id="breweryDetails"></div>
-           
-            <!-- Brewery tasting tour list. -->
-            <div class="col" id="breweryTourListDiv" >
-                <h1>Brewery Tasting Tour List</h3>
-                <ul id="breweryTourList">
-                </ul>
-                <button class="btn btn-warning" id="generateMap">Generate Map</button>
-            </div>
+    <!-- container for search breweries -->>
+    <div> 
+        <!-- Brewery details displayed on the left. -->
+        <div id="breweryDetails">
+
+        </div>
+        
+        <!-- Brewery tasting tour list. -->
+        <div id="breweryTourListDiv" >
+            <h1>Brewery Tasting Tour List</h3>
+            <ul id="breweryTourList">
+
+            </ul>
+            <button class="generateMapButton" id="generateMap">Generate Map</button>
+        </div>
+
+        <!-- List the breweries here that are returned by the API call. -->
+        <div id="dbrewerieslist">
+            <h2>Click on the brewery buttons for more details. Add up to 5 different breweries to your brewery tasting tour list.</h2>
         </div>
     </div>
 
     <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
-    <div class="container" id="mapSection"> 
+    <div id="mapSection"> 
         <div class="col" id="map"></div> 
         <div class="col" id="right-panel"></div>   
         <div>
-            <button class="btn btn-warning" id="newSearch">Start New Search</button>
+            <button class="newSearchButton" id="newSearch">Start New Search</button>
         </div>
     </div> 
    

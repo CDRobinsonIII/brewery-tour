@@ -89,6 +89,10 @@
     
       $(".title").slideUp();
       $("#dbrewerieslist").fadeIn().css("display", "block");
+
+      breweryDetails
+
+    
       var whatCity = $("#city").val();
       console.log("The city typed in is: " + whatCity);
 
@@ -244,7 +248,7 @@
             '<div id="infoWindowContent">' +
                 "<p ><b>Address: </b>"+breweryInfoWindow+"</p>" +
                 "<p><b>Phone Number: </b>"+phoneInfoWindow+"</p>" +
-                '<p><b>Website: </b> <a href="'+websiteInfoWindow+'"/ target="_blank">' + websiteInfoWindow +
+                '<p><b>Website: </b> <a href="'+websiteInfoWindow+'" target="_blank">' + websiteInfoWindow +"</a></p>" +
             "</div>" +
             "</div>";
 
@@ -337,41 +341,20 @@ function displayBreweryDetails(event) {
   var breweryName = $("<p>" ).text(nameDisplay);
   var breweryLocation = $("<p>").text(breweryAddress);
   var breweryPhone = $("<p>").text(phoneDisplay);
-  var breweryWebsite = $("<p>").text(websiteDisplay);
 
-  var addToTourButton = $("<button>").addClass("btn btn-success switch").text("Add to Tour").attr("id",breweryDisplayId).on("click",addToBreweryTastingList);
+  // Added the target ='_blank' attribute so that link would open in a new window. 
+  var breweryWebsite = $("<p>").append($("<a target='_blank'>").attr("href",websiteDisplay).text(websiteDisplay));
+
+
+  var addToTourButton = $("<button>").addClass("addToTourButton switch").text("Add to Tour").attr("id",breweryDisplayId).on("click",addToBreweryTastingList);
 
   $("#breweryDetails").append(header,breweryName,breweryLocation,breweryPhone,breweryWebsite,addToTourButton);
-  console.log(breweryWebsite);
   
   $("#breweryTourListDiv").css("display","block");
- 
-
+  $("#breweryDetails").fadeIn().css("display", "block");
 
 }
 
-
-
-
-  // Create an on click event for when user enters a city in the search box. Call function getBreweryList to generate available breweries.
-  // $("#cityBrewerySearch").on("click", getBreweryList);
-
-  // // Create an on click event for when user wants to add a brewery to their tour. Call function addBreweryToTour to push selected brewery to tour list.
-  // $("#addToTour").on("click", addBreweryToTour);
-
-  // // Create an on click event for when user wants to generate their tour of the breweries. Call function "         " to generate the map.
-  // $("#addToTour").on("click", initMap);
-
-
-  //City Validation use of promise or any other HTML validation call
-  //Search City Function
-
-  //Display data on $dbreweries
-  //Map Shows Direstion when brewery is clicked
-
-
-
-  //Collapse Function
   
 
 
