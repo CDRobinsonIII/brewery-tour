@@ -144,28 +144,29 @@ button{
   }
 
   #map {
-    display: none;
     background-color: white;
     color: black;
-    /* width: 100%; */
     height: 600px;
-    /* margin-top:550px; */
-    /* margin-bottom:50px; */
     border:solid;
-    width: 100%;
+    width: 70%;
+    margin: 0;
+    float: left;
   }
   #right-panel {
     display: flex;
-    display: none;
     background-color: white;
     color: black;
-    height: 400px;
-   width:400px;
+    height: 600px;
+    width:28%;
     overflow: auto;
+<<<<<<< HEAD
     font-family: 'Xanh Mono', monospace;
     margin-right: 24px;
+=======
+    font-family: 'Xanh Mono', monospace;    
+>>>>>>> 379cf1736b482c18079c537e233a565264ba7e7c
     border:solid;
-    float: right;
+    margin: 0;
   }
 
   h2{
@@ -183,6 +184,13 @@ button{
 
   }
 
+  #infoWindowContent p {
+      color:black;
+  }
+
+  #mapSection {
+      display:none;
+  }
   input{
       border-radius: 1rem;
   }
