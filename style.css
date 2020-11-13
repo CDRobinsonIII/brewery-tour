@@ -146,3 +146,7 @@ p{
   h2{
       color: black;
   }
+
+  #infoWindowContent p {
+      color:black;
+  }
