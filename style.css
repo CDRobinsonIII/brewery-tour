@@ -130,7 +130,7 @@ p {
     color: rgb(214, 200, 200);
     cursor: pointer;
     padding: 11px;
-    width: 50%;
+    width: 33%;
     border: none;
     text-align: left;
     outline: none;
@@ -139,7 +139,7 @@ p {
 
 #breweryDetails {
     display: none;
-    background-color: white;
+    background-color:rgb(230, 184, 132);
     width: 50%;
     float: left;
     opacity: 80%;
@@ -171,8 +171,7 @@ button {
 }
 
 .addToTourButton {
- background-color: rgb(233, 150, 55);
- width:30%
+    background-color: white;
 }
 
 .newSearchButton {
@@ -230,7 +229,6 @@ button {
     vertical-align: 60px;
     position: absolute;
     top:calc(24vh - 100px);
-
   }
 
   #infoWindowContent p {
@@ -247,4 +245,25 @@ button {
       border-radius: 1rem;
       padding: 13px;;
   }
+
+  @media only screen and (max-width: 611px) {
+    #breweryTourListDiv, #breweryDetails {
+      height: 400px;
+      overflow: auto;
+    }
+  }
+
+  @media only screen and (max-width: 611px) {
+    #breweryDetails p, #breweryDetails a  {
+    background-color: rgb(230, 184, 132);  
+    color: black;  
+    }
+  }
+
+  @media only screen and (max-width: 611px) {
+    .collapsible {
+        width: 50%; 
+    }
+  }
+  
 
