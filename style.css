@@ -215,6 +215,8 @@ button{
 
   #infoWindowContent p {
       color:black;
+      background-color: white;
+
   }
 
   #mapSection {
