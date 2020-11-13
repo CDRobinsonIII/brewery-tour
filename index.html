@@ -16,7 +16,7 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- Google API Link -->
     <script
-      ssrc="https://maps.googleapis.com/maps/api/js?key="Remember to add key in here - delete quotes"&callback=initMap&libraries=&v=weekly"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
     <!-- CSS Link -->
@@ -27,6 +27,7 @@
 </head>
 
 <body>
+
     <!--Jumbotron for Title-->
     <div class=" container mt-4 text-center p-2 title">
         <h1> <strong>Brew Bro's Tour</strong></h1>
@@ -37,14 +38,14 @@
         
         <input type="text" placeholder="Input City" id="city" class="input">
         <button type="button" id="search">Lets Go!</button>
-
     </div>
+
     <!-- container for search breweries -->
     <div class="container">
         <div class="row">
             <div class="col" id="dbrewerieslist">
                 <h2>Breweries found:</h2>
-            <!-- Brewery details displayed on the right. -->
+            <!-- Brewery details displayed on the left. -->
             <div class="col" id="breweryDetails"></div>
            
             <!-- Brewery tasting tour list. -->
@@ -54,30 +55,18 @@
                 </ul>
                 <button class="btn btn-warning" id="generateMap">Generate Map</button>
             </div>
-            
-          
-    </div>
+        </div>
     </div>
 
     <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
-     <div class="container"> 
-        
-         <div class="row"> 
-             <div class="col" id="map"> 
-                <p>Map Display</p>
-                <label class="" id="right-panel">Right Panel</label>  
-                
-                
-             </div> 
-               
-     </div> 
-     
- </div> 
-    <!-- 5 display box with Name, Address, tel,email -->
-             
-    <!-- Container for maps -->
-
-
+    <div class="container" id="mapSection"> 
+        <div class="col" id="map"></div> 
+        <div class="col" id="right-panel"></div>   
+        <div>
+            <button class="btn btn-warning" id="newSearch">Start New Search</button>
+        </div>
+    </div> 
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
 
