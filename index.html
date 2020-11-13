@@ -2,65 +2,52 @@
 <html lang="en">
 
 <head>
+    <!-- Mobile -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-
-
+    <!-- Font links -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
+    <!-- Ajax Link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- Google API Link -->
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
       defer
     ></script>
+    <!-- CSS Link -->
     <link rel="stylesheet" href="./style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
-
-    <!-- <link
-    rel="stylesheet" 
     
-    type="text/css" 
-    href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css"> -->
 
     <title>Brewery Tour</title>
 </head>
 
 <body>
+
     <!--Jumbotron for Title-->
-    <div class="jumbotron container mt-4 text-center p-2 title">
-        <h1> <strong>Brewery Quest&smile; </strong></h1>
+    <div class=" container mt-4 text-center p-2 title">
+        <h1> <strong>Brewery Quest</strong></h1>
         <p><strong>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
                 Enter the city where you would like to find breweries to visit.
                 Pick from the breweries generated and add them to your map.
                 Lastly, send the directions to your designated driver and wait for your ridde to arrive.</strong></p>
-
-        <input type="text" placeholder="Input City" id="city" class="input-inline p-1 rounded">
-        <button class="btn-inline p-1 bg-secondary rounded" type="button" id="search">Lets Go!</button>
-
+        
+        <input type="text" placeholder="Input City" id="city" class="input">
+        <button type="button" id="search">Lets Go!</button>
     </div>
+
     <!-- container for search breweries -->
-    <div class="container clear-fix">
+    <div class="container">
         <div class="row">
-            
-            <!-- Breweries to choose from displayed on the left. -->
-            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6" id="dbrewerieslist">
-                <h1>Brewery List</h1>
-                <hr>
-                <p>Click on a Brewery name below for more details!</p>
-            </div>
-
-            <!-- Brewery details displayed on the right. -->
-            <div class="col-sm-6 mt-4 bg-dark rounded p-6 text-center" id="breweryDetails">                
-            </div>
-
-        <div class="row">
-            
+            <div class="col" id="dbrewerieslist">
+                <h2>Breweries found:</h2>
+            <!-- Brewery details displayed on the left. -->
+            <div class="col" id="breweryDetails"></div>
+           
             <!-- Brewery tasting tour list. -->
-            <div class="col-sm-6 mt-4 bg-dark rounded text-light ml-6 float-right" id="breweryTourListDiv">
+            <div class="col" id="breweryTourListDiv" >
                 <h1>Brewery Tasting Tour List</h1>
                 <ul id="breweryTourList">
                 </ul>
@@ -70,21 +57,14 @@
     </div>
 
     <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-9 m-0 p-0 rounded text-light">
-                <div id="map"></div>
-            </div>
-            <div class="col-sm-3 m-0 p-0 rounded text-light">
-                <div id="right-panel"></div>
-            </div>
+    <div class="container" id="mapSection"> 
+        <div class="col" id="map"></div> 
+        <div class="col" id="right-panel"></div>   
+        <div>
+            <button class="btn btn-warning" id="newSearch">Start New Search</button>
         </div>
-    </div>
-    <!-- 5 display box with Name, Address, tel,email -->
-
-    <!-- Container for maps -->
-
-
+    </div> 
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="./script.js"></script>
 
