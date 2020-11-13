@@ -72,6 +72,87 @@
       });
     }
 
+  //On click function
+  $("#search").on("click", function (c) {
+    c.preventDefault();
+    $(".title").slideUp();
+    $("#dbrewerieslist").fadeIn().css("display", "block");
+    //$("#dmap").css("display", "block");
+    var whatCity = $("#city").val();
+    console.log("The city typed in is: " + whatCity);
+
+    // Call getBreweryList function to get list of breweries based off of id search
+    getBreweryList()// *** this function must return a promise then you do .then(() => {wrap the code here})d
+
+    setTimeout(() => {  
+      for (i = 0; i < breweryList.length; i++) {
+        breweryBtn = $("<button>");
+        breweryNameToAdd = breweryList[i].name;
+        var breweryName = breweryBtn.addClass("collapsible").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
+        $("#dbrewerieslist").append(breweryName);
+        // addBreweryToTourTest();
+        // initMap();
+      }
+    }, 500);
+
+    $("#generateMap").on("click",addBreweriesToTourToWayPointArray);
+      
+    
+    // var coll = $(".collapsible");
+    // var i;
+
+    // for (i = 0; i < coll.length; i++) {
+    //   coll[i].addEventListener("click", function() {
+    //     this.classList.toggle("active");
+    //     var content = this.nextElementSibling;
+    //     if (content.style.display === "block") {
+    //       content.style.display = "none";
+    //       $("#dmap").fadeOut().css("display", "none");
+
+    //     } else {
+    //       content.style.display = "block";
+    //       $("#dmap").fadeIn().css("display", "block");
+    //     }
+    //   });
+    // }return(coll)
+
+  })  
+  // This will be used to build the wayPointsArray list. 
+  // When user clicks on add to tour we grab the object details and add the index to the brewery tour list. 
+  function addBreweryToTour() {
+
+    // Using jQuery/DOM grab the brewery that the user wants to add to their tour.
+    // Add the index of the brewery to the array for access later to generate Google maps info windows.
+    var breweryIndexToAdd = $(this).indexInArray;
+    breweryTourList.push(breweryIndexToAdd);
+
+    // Add lat and lng of brewery to the way points array. 
+    var breweryLatLngToAdd = $(this).latlng;
+    addBreweryToList = {
+      location: breweryLatLngToAdd,
+      stopover: true
+    };
+
+    wayPointsArray.push(addBreweryToList);
+
+    // This code is in case we want to try to add breweries without lat and lng details. If we have time we can add.
+    // If we decide to implement this we will have to modify the if statement in the getBreweryList function, because it doesn't add breweries without lat & lng.
+    //   else if ((breweryLat === null) & (breweryPostalCode !== null)) {
+    //     console.log("There are no coordnates but there is a postal code!");
+    //     addBreweryToList = {
+    //     location: breweryName+" "+breweryPostalCode,
+    //     stopover: true
+    //   };
+
+    //   breweryList.push(addBreweryToList);
+
+
+    //   console.log("The brewery list to display on map is this long: " + breweryList.length);
+    //   console.log(breweryList);
+    // }
+
+  }
+
   // This is a test function to see if code works before merging. Delete after confirming.
   function addBreweriesToTourToWayPointArray(event) {
 
@@ -93,12 +174,18 @@
       wayPointsArray.push(addBreweryToList);
 
     }
-    $("#map").css("display","block");
-    $("#right-panel").css("display","block");
-    $(".title").css("display","block");
-    $("#dbrewerieslist").css("display","none");
+    
+
     $("#breweryDetails").css("display","none");
-    $("#breweryTourList").css("display","none");
+    $("#breweryTourListDiv").css("display","none");
+    
+    $("#map").slideUp().css("display","block");
+    $("#right-panel").css("display","block");
+
+    $(".title").css("display","none");
+    $("#dbrewerieslist").fadeOut().css("display","none");
+
+    
 
     breweryTourList
 
@@ -172,7 +259,7 @@ function addToBreweryTastingList (event) {
   // This will be used by the map API functions to access breweries the user wants to visit.
   breweryTourList.push(addBreweryNameToTour);
 }
-
+//Display Brewery Details
 function displayBreweryDetails(event) {
   event.preventDefault();
   $("#breweryDetails").text("");
@@ -189,7 +276,7 @@ function displayBreweryDetails(event) {
   var breweryAddress = (streetDisplay+"; "+cityDisplay+"; "+stateDisplay+"; "+postalCodeDisplay);
 
   var header = $("<h1>").text("Brewery Details");
-  var breweryName = $("<p>").text(nameDisplay);
+  var breweryName = $("<p>" ).text(nameDisplay);
   var breweryLocation = $("<p>").text(breweryAddress);
   var breweryPhone = $("<p>").text(phoneDisplay);
   var breweryWebsite = $("<p>").text(websiteDisplay);
@@ -200,54 +287,11 @@ function displayBreweryDetails(event) {
   console.log(breweryWebsite);
   
   $("#breweryTourListDiv").css("display","block");
+ 
 
 }
 
 
-  $("#search").on("click", function (c) {
-    c.preventDefault();
-    $(".title").slideUp();
-    $("#dbrewerieslist").fadeIn().css("display", "block");
-    //$("#dmap").css("display", "block");
-    var whatCity = $("#city").val();
-    console.log("The city typed in is: " + whatCity);
-    // Call getBreweryList function to get list of breweries based off of id search
-    getBreweryList()// *** this function must return a promise then you do .then(() => {wrap the code here})d
-
-    setTimeout(() => {  
-      for (i = 0; i < breweryList.length; i++) {
-        breweryBtn = $("<button>");
-        breweryNameToAdd = breweryList[i].name;
-        // var breweryArrayName=breweryList[i].name;
-        var breweryName = breweryBtn.addClass("collapsible m-2 rounded").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
-        $("#dbrewerieslist").append(breweryName);
-        // addBreweryToTourTest();
-        // initMap();
-      }
-    }, 500);
-
-    $("#generateMap").on("click",addBreweriesToTourToWayPointArray);
-      
-    
-    // var coll = $(".collapsible");
-    // var i;
-
-    // for (i = 0; i < coll.length; i++) {
-    //   coll[i].addEventListener("click", function() {
-    //     this.classList.toggle("active");
-    //     var content = this.nextElementSibling;
-    //     if (content.style.display === "block") {
-    //       content.style.display = "none";
-    //       $("#dmap").fadeOut().css("display", "none");
-
-    //     } else {
-    //       content.style.display = "block";
-    //       $("#dmap").fadeIn().css("display", "block");
-    //     }
-    //   });
-    // }return(coll)
-
-  })
 
 
   // Create an on click event for when user enters a city in the search box. Call function getBreweryList to generate available breweries.
