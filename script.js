@@ -11,15 +11,15 @@
   // Function to use Open Brewery DB API to get a list of breweries based on the city inputed by the user. 
   // All breweries meeting the search criteria will be stored in the global breweryList var. 
   function getBreweryList() {
-    var UserCityInput = $("#city").val();
+  var UserCityInput = $("#city").val();
 
-    // The encodeURIComponent method replaces any spaces in the city name with the correct URL code for a space (%20). 
-    // Open Brewery DB doesn't allow spaces in their search terms.
-    var queryCity = encodeURIComponent(UserCityInput);
-    console.log("This is the city in correct URL format: " + queryCity);
+   // The encodeURIComponent method replaces any spaces in the city name with the correct URL code for a space (%20). 
+   // Open Brewery DB doesn't allow spaces in their search terms.
+   var queryCity = encodeURIComponent(UserCityInput);
+   console.log("This is the city in correct URL format: " + queryCity);
 
-    // Define queryURL to includes breweries are in the city inputed by the user, have the type as a micro brewery, and will return up to 25 results. 
-    var queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + queryCity + "&by_type=micro&per_page=25&page=1";
+   // Define queryURL to includes breweries are in the city inputed by the user, have the type as a micro brewery, and will return up to 25 results. 
+   var queryURL = "https://api.openbrewerydb.org/breweries?by_city=" + queryCity + "&by_type=micro&per_page=25&page=1";
 
     // AJAX call to get breweries from the API.
     $.ajax({
@@ -28,6 +28,7 @@
     })
 
       // Promise statement waiting for requested information to be processed and returned from API.
+
       .then(function (response) {
         console.log(response);
 
@@ -96,7 +97,9 @@
     }, 500);
 
     $("#generateMap").on("click",addBreweriesToTourToWayPointArray);
-      
+   
+    //create three display of list choosen by user Div List
+
     
     // var coll = $(".collapsible");
     // var i;
@@ -134,9 +137,10 @@
     };
 
     wayPointsArray.push(addBreweryToList);
-
+    console.log(wayPointsArray)
     // This code is in case we want to try to add breweries without lat and lng details. If we have time we can add.
     // If we decide to implement this we will have to modify the if statement in the getBreweryList function, because it doesn't add breweries without lat & lng.
+   
     //   else if ((breweryLat === null) & (breweryPostalCode !== null)) {
     //     console.log("There are no coordnates but there is a postal code!");
     //     addBreweryToList = {
@@ -155,15 +159,10 @@
 
   // This is a test function to see if code works before merging. Delete after confirming.
   function addBreweriesToTourToWayPointArray(event) {
-
     event.preventDefault();
-
     for (i = 0; i < breweryTourList.length; i++) {
-
       // Add the breweries that the user wants to visit to the way points array so they can be rendered on the map.
-
       var getIndex = breweryTourList[i];
-     
       // Add lat and lng of brewery to the way points array. 
       var breweryLatLngToAdd = breweryList[getIndex].latlng;
       addBreweryToList = {
@@ -179,7 +178,7 @@
     $("#breweryDetails").css("display","none");
     $("#breweryTourListDiv").css("display","none");
     
-    $("#map").slideUp().css("display","block");
+    $("#map").fadeIn().css("display","block");
     $("#right-panel").css("display","block");
 
     $(".title").css("display","none");
