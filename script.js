@@ -1,6 +1,7 @@
   // Global variable to hold available breweries to generate brewery information divs so user and pick the ones they want to visit.
   var breweryList = [];
 
+  // Global variable to track number of breweries on tour list. 
   var numberOfBreweriesInTour = 0;
 
   // Global variable to hold indexes of the breweries the user wants to visit.
@@ -82,34 +83,36 @@
   //On click function
   $("#search").on("click", function (c) {
     c.preventDefault();
-    
-    $(".title").slideUp();
-    $("#dbrewerieslist").fadeIn().css("display", "block");
     var whatCity = $("#city").val();
-    console.log("The city typed in is: " + whatCity);
 
-    // Call getBreweryList function to get list of breweries based off of id search
-    getBreweryList()// *** this function must return a promise then you do .then(() => {wrap the code here})d
+    if (whatCity !== "") {
+    
+      $(".title").slideUp();
+      $("#dbrewerieslist").fadeIn().css("display", "block");
+      var whatCity = $("#city").val();
+      console.log("The city typed in is: " + whatCity);
 
-    setTimeout(() => {  
+      // Call getBreweryList function to get list of breweries based off of id search
+      getBreweryList()// *** this function must return a promise then you do .then(() => {wrap the code here})d
+
+     setTimeout(() => {  
       for (i = 0; i < breweryList.length; i++) {
         breweryBtn = $("<button>");
         breweryNameToAdd = breweryList[i].name;
         var breweryName = breweryBtn.addClass("collapsible").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
         $("#dbrewerieslist").append(breweryName);
       }
-    }, 500);
+      }, 500);
+    }
+      else {
+        return
+      };
+    
 
     $("#generateMap").on("click",addBreweriesToTourToWayPointArray);
 
     $("#newSearch").on("click", function() {
       location.reload();
-  
-
-      // $("#dbrewerieslist").clear();
-      // $("#city").text("");
-
-
     });
 
       
@@ -218,6 +221,8 @@
       var imageMarkerIndex = breweryTourList[i];
       var imageMarker = { 
         url : "http://www.artwithlarisse.com/icon/pint.png",
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(45, 45),
         scaledSize: new google.maps.Size(27,43)  
       } 
       var markerLat = parseFloat(breweryList[imageMarkerIndex].lat);
@@ -250,7 +255,8 @@
         position: markerPosition,
         map,
         title: nameInfoWindow,
-        icon: imageMarker
+        icon: imageMarker,
+        animation: google.maps.Animation.DROP
       });
       marker.addListener("click", () => {
         infowindow.open(map, marker);
@@ -292,6 +298,10 @@ function addToBreweryTastingList (event) {
 
   // Get the index of the brewery that the user added to the brewery tasting map.
   var addBreweryNameToTour = event.target.id;
+
+  if ($.inArray(addBreweryNameToTour, breweryTourList) > -1 ) {
+    return
+  }
 
   // Create a li tag to attach the name of the brewery that the user wants to add to the brewery tasting map. 
   var addLi = $("<li>").text(breweryList[addBreweryNameToTour].name);
