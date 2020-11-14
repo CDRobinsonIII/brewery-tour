@@ -134,11 +134,6 @@ $("#search").on("click", function (c) {
     return
   };
 
-<<<<<<< HEAD
-    $("#newSearch").on("click", function() {
-      location.reload();
-
-=======
   // On click event for when the user clicks on the generate map button in the brewery tasting tour list. 
   $("#generateMap").on("click", addBreweriesToTourToWayPointArray);
 
@@ -146,7 +141,6 @@ $("#search").on("click", function (c) {
   $("#newSearch").on("click", function () {
     location.reload();
   });
->>>>>>> ea14ebdde1e27d43d5b7bbda48335547d92d0947
 
 })
 
@@ -157,25 +151,10 @@ function addBreweriesToTourToWayPointArray(event) {
 
   for (i = 1; i < breweryTourList.length; i++) {
 
-<<<<<<< HEAD
-      
-   
-
-  })  
-  // This will be used to build the wayPointsArray list. 
-  // When user clicks on add to tour we grab the object details and add the index to the brewery tour list. 
-  function addBreweryToTour() {
-
-    // Using jQuery/DOM grab the brewery that the user wants to add to their tour.
-    // Add the index of the brewery to the array for access later to generate Google maps info windows.
-    var breweryIndexToAdd = $(this).indexInArray;
-    breweryTourList.push(breweryIndexToAdd);
-=======
     console.log("@@@@@@@@"+i);
 
     // Add the breweries that the user wants to visit to the way points array so they can be rendered on the map.
     var getIndex = breweryTourList[i];
->>>>>>> ea14ebdde1e27d43d5b7bbda48335547d92d0947
 
     // Add lat and lng of brewery to the way points array. 
     var breweryLatLngToAdd = breweryList[getIndex].latlng;
