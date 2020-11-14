@@ -38,7 +38,7 @@ This project emphasizes the use of using CSS Framework, JavaScript, jQuery, AJAX
  + A Generate Map button
     - This display map route of breweries selected.
     - When clicked based on the number of breweries selected, it would display a map route using google maps.
-     ![Screenshotdisplay](./Screenshot1.jpg)
+     ![Screenshotdisplay](./Screenshot.jpg)
 
 # The tasks for the web application were accomplished by:
  + Using the Open Brewery DB API to get brewery data for specific cities
