@@ -12,6 +12,7 @@ For this group project we were tasked with creating a web application from scrat
         <li>Google Maps Direction API is used to generate a map with multiple stops. The Google Maps API directionsDisplay and directionsRenderer functions are used to render and display tour map to the maps div in the index file. Google Maps Directions API optimizes the route to reduce drive time.</li>
         <li>Once the map is displayed, the user can click on custom map markers for the individual breweries on their tasting route and get the information for each brewery.</li>
         <li>At the bottom of the map the user has the option to start a new search. The start search button takes the user back to the start of the web application.</li>
+        <li>Save any breweries the user adds to their brewery tasting tour list to local storage to reference them later as breweries they "have visited".</li>
     </ul>
     
 The tasks for the web application were accomplished by: 
@@ -27,6 +28,8 @@ The tasks for the web application were accomplished by:
         <li>Render individual brewery details on screen based on brewery button the user clicks on.</li>
         <li>Generate brewery tasting tour list based off of user input.</li>
         <li>Generate map and directions panel.</li>
+        <li>Store breweries added to tasting tour to local straoge.</li>
+        <li>Retrieve breweries "visited" from local storage.</li>
     </ul>
 
 ## Technologies Used
@@ -36,6 +39,7 @@ The tasks for the web application were accomplished by:
     <li>CSS</li>
     <li>jQuery</li>
     <li>DOM Manipulation</li>
+    <li>Local Storage</li>
     <li>Functions</li>
 </ul>
 

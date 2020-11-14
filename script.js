@@ -10,6 +10,10 @@ var breweryTourList = [];
 // Global variable to hold way points for the Google directions API call. 
 var wayPointsArray = [];
 
+// Create an empty array var to hold the breweries added to brewery tasting tour.
+// Global variable to hold the breweries user has added to their brewery tasting tour list.
+var breweriesVisited = [];
+
 // Function to use Open Brewery DB API to get a list of breweries based on the city inputed by the user. 
 // All breweries meeting the search criteria will be stored in the global breweryList var. 
 function getBreweryList() {
@@ -85,6 +89,13 @@ $("#search").on("click", function (c) {
   if (whatCity !== "") {
 
     $(".title").slideUp();
+
+    // See if there are breweries in local storage. If there is display the divs here.
+    if (breweriesVisited === null) {
+      $("#breweryBadgeHeader").css("display","none");
+      $("#breweryBadgeBoard").css("display","none");
+    };
+
     $("#dbrewerieslist").fadeIn().css("display", "block");
 
     var whatCity = $("#city").val();
@@ -122,32 +133,65 @@ $("#search").on("click", function (c) {
 })
 
 // Function to add breweries the user wants to visit to the way points array - to send to the Google Maps Directions API.
+// Function also adds the breweries to the stora breweries to local storage array. 
 function addBreweriesToTourToWayPointArray(event) {
   event.preventDefault();
 
   for (i = 1; i < breweryTourList.length; i++) {
 
+    console.log("@@@@@@@@"+i);
+
     // Add the breweries that the user wants to visit to the way points array so they can be rendered on the map.
     var getIndex = breweryTourList[i];
+
     // Add lat and lng of brewery to the way points array. 
     var breweryLatLngToAdd = breweryList[getIndex].latlng;
+    console.log("$$$$$$$$$"+breweryLatLngToAdd);
     addBreweryToList = {
       location: breweryLatLngToAdd,
       stopover: true
     };
 
+    // Push to ways point array.
     wayPointsArray.push(addBreweryToList);
+
+    // Add brewery name and city to the breweries to the stora breweries to local storage array. 
+    var breweryNameToAdd = breweryList[getIndex].name;
+    var breweryCityToAdd = breweryList[getIndex].city;
+
+    addBreweryToLocalStorageArray = {
+      city: breweryCityToAdd,
+      name: breweryNameToAdd
+    };
+
+    // Push to local stroage array.
+    breweriesVisited.push(addBreweryToLocalStorageArray);
 
   }
 
   // Change display properties of the various divs to show only the map section.
   $("#breweryDetails").css("display", "none");
   $("#breweryTourListDiv").css("display", "none");
-
+  $("#breweryBadgeHeader").css("display","none");
+  $("#breweryBadgeBoard").css("display","none");
   $("#mapSection").slideUp().css("display", "block");
-
   $(".title").css("display", "none");
   $("#dbrewerieslist").fadeOut().css("display", "none");
+
+  // Because the way points array doesn't add the first index to the array (as it is the start and end point of the trip)...
+  // We have to push the 0 index to the local storage array.
+    breweryNameToAdd = breweryList[breweryTourList[0]].name;
+    breweryCityToAdd = breweryList[breweryTourList[0]].city;
+
+    addBreweryToLocalStorageArray = {
+      city: breweryCityToAdd,
+      name: breweryNameToAdd
+    };
+
+    breweriesVisited.push(addBreweryToLocalStorageArray);
+
+  // Call function to store breweries added to the tasting tour list  (thus visited) to local storage.
+  storageBreweriesVisited();
 
   // Call Google Maps Directions API function to get brewery tasting tour map.
   initMap();
@@ -318,6 +362,43 @@ function displayBreweryDetails(event) {
 
 }
 
+// Function to storage city search history to local storage. 
+function storageBreweriesVisited () {
+    localStorage.setItem("breweriesVisited", JSON.stringify(breweriesVisited));
+}
 
+// Function to see if there are any cities in the city search history stored in the local storage.
+function renderBreweriesVisited () {
 
+    // Retrieve stored breweries from local storage.
+    var getStoredBreweriesVisited = JSON.parse(localStorage.getItem("breweriesVisited"));
+
+    // If there are breweries in local storage, render them to the breweries visited div with id = breweryBadge.
+    if (getStoredBreweriesVisited !== null) {
+      breweriesVisited = getStoredBreweriesVisited;
+
+    $("#breweryBadgeHeader").css("display","block");
+    $("#breweryBadgeBoard").css("display","flex");
+
+        // Loop through the stored breweries and render them in the breweries div with id = breweryBadge.
+        for (i=0; i < breweriesVisited.length; i++) {
+        
+            // Create an button tag to attach the new city to. To append to the city history list.
+            var breweryBadgeDiv= $('<div>').addClass(`breweryBadge${i} breweryBadgeDetails`);
+            $("#breweryBadgeBoard").append(breweryBadgeDiv);
+
+            // Create p tag to display brewery name in.
+            var breweryName= $("<p>").text(breweriesVisited[i].name);
+
+            // Create p tag to display brewery city in.
+            var breweryCity= $("<p>").text(breweriesVisited[i].city);
+
+            // Append the city name from local storage to the city history list. 
+            $(`.breweryBadge${i}`).append(breweryName,breweryCity);
+        }
+    }
+}
+
+// Call function to show visited breweries that are in local storage on start page under city search input.
+renderBreweriesVisited();
 

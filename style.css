@@ -1,8 +1,6 @@
 
 body {
-    
-    /* background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg); */
-    font-family: 'Xanh Mono', monospace;   
+        font-family: 'Xanh Mono', monospace;
     background-color: rgb(48, 43, 43);
 }
 
@@ -246,6 +244,32 @@ button {
       border-radius: 1rem;
       padding: 13px;;
   }
+
+ #breweryBadgeBoard {
+    display: none;
+    height: auto;
+    text-align: center;
+}
+
+.breweryBadgeDetails {
+    margin-right: 20px;
+    background-image: url(https://i.gifer.com/wmp.gif);
+    border-radius: 2rem;
+    width: 100px;
+    opacity: 75%;
+    border-radius: 2rem;
+}
+
+#breweryBadgeHeader h1 {
+    color: white;
+    font-size: 45px;
+}
+
+#breweryBadgeHeader {
+    display: none;
+}
+
+
 
   @media only screen and (max-width: 611px) {
     #breweryTourListDiv, #breweryDetails {
