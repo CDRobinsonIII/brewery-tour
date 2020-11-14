@@ -104,32 +104,13 @@
 
     $("#newSearch").on("click", function() {
       location.reload();
-  
 
-      // $("#dbrewerieslist").clear();
-      // $("#city").text("");
 
 
     });
 
       
-    // var coll = $(".collapsible");
-    // var i;
-
-    // for (i = 0; i < coll.length; i++) {
-    //   coll[i].addEventListener("click", function() {
-    //     this.classList.toggle("active");
-    //     var content = this.nextElementSibling;
-    //     if (content.style.display === "block") {
-    //       content.style.display = "none";
-    //       $("#dmap").fadeOut().css("display", "none");
-
-    //     } else {
-    //       content.style.display = "block";
-    //       $("#dmap").fadeIn().css("display", "block");
-    //     }
-    //   });
-    // }return(coll)
+   
 
   })  
   // This will be used to build the wayPointsArray list. 
