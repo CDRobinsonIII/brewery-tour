@@ -1,49 +1,64 @@
-body{
-    
-    /* background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg); */
-    font-family: 'Xanh Mono', monospace;
-   
+
+body {
+        font-family: 'Xanh Mono', monospace;
     background-color: rgb(48, 43, 43);
 }
 
 
-h1{
+.title h1 {
     text-align: center;
-    color: rgb(24, 23, 23);
-    font-family: 'Great Vibes', cursive
-
+    color: white;
+    font-family: 'Great Vibes', cursive;
+    font-size: 80px;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
 }
 
-p{
+.companyDetails {
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    opacity: 80%;
+    border-radius: 1rem;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 1px;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(59, 50, 50);
+    font-family: 'Great Vibes', cursive;
+    font-size: 45px;
+}
+
+p {
     text-align: center;
     color: white;
     background-color: rgb(0, 0, 0);
     opacity: 75%;
     border-radius: 4rem;
-    
 }
 
 
-.title{
+.title {
     background-image: url(https://images.squarespace-cdn.com/content/v1/5bec5a8c1137a6f21d746907/1579636828420-1FL2XG6ERYZ95D7NCLHF/ke17ZwdGBToddI8pDm48kOggE0Ch6pMGalwtLMqzsSB7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Ufo5RWkg_J4of0jUNHaDHx6pZKBvpVYzidBWCapg0tuoMuEaB2HPGSYDV-11UTcW2g/kunstler%2Bbrewing-10.jpg?format=2500w); 
     opacity: 80%;
-    position: absolute;
-    left: calc(20vw - 100px);
-    top:calc(35vh - 100px);
-    margin-right: 150px;
-    padding: 5%;
+    position: center;
+    margin-top: 100px;
+    padding: 2%;
     border-radius:1rem;
+    width:96%;
+    text-align: center;
 }
 
 
-#city{
-    opacity: 80%;
+#city {
+    opacity: 75%;
     text-align: center;
     width: auto;
-    margin-left: 25%;
 }
 
-#search{
+#search {
     /* background-image: url(https://i.gifer.com/wmp.gif); */
     width: 30%;
     font-family: 'Xanh Mono', monospace;
@@ -52,55 +67,56 @@ p{
     background-color: rgb(0, 0, 0);
     color: whitesmoke;
     cursor: pointer;
+    padding: 0.5%;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-#search:hover{
+#search:hover {
     /* background-image: url(https://i.ytimg.com/vi/fOQRn1Spopc/maxresdefault.jpg); */
     background-image: url(https://i.gifer.com/wmp.gif);
 }
 
-#dbreweries:hover{
+#dbreweries:hover {
     background-image: url(https://i.ytimg.com/vi/fOQRn1Spopc/maxresdefault.jpg); 
     border: 1px solid black;
 }
 
-#dbreweries{
+#dbreweries {
     border: 1px solid ;
     padding: 1rem;
     background-image: url(https://i.gifer.com/wmp.gif);
     opacity: 70%;
 }
 
-#dbrewerieslist{
+#dbrewerieslist {
     display: none;
-    /* background-image: url(https://i.ytimg.com/vi/fOQRn1Spopc/maxresdefault.jpg); */
-    color: rgb(59, 50, 50);
-    opacity: 70%;
-    background-color: rgb(48, 43, 43);
-    border-radius: 30%;
-    margin-top: 24px;
-    
+    /* background-image: url(https://i.ytimg.com/vi/fOQRn1Spopc/maxresdefault.jpg);  */
+    background-color: rgb(48, 43, 43); 
+    border-radius: 30%; 
+    margin-top: 24px; 
 }
-
-/* Possibly delete this one. */
-/* Deleted */
 
 #breweryDetails {
     display: block;
 }
 
+#breweryDetails a {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    opacity: 75%;
+    border-radius: 4rem;
+}
 
-#imgmap{
+
+#imgmap {
     margin-bottom: 24px;
     margin-left: 20px;
     opacity: 80%;
 }
 
-#breweryTourListDiv {
-    display: none;
-}
-
-#logos{
+#logos {
     height: 5%;
     width: 5%;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQRZ_EV9DkbmOn6GkbebqbCPfixGzL--TINOg&usqp=CAU);
@@ -111,59 +127,67 @@ p{
     background-color: rgb(65, 61, 61);
     color: rgb(214, 200, 200);
     cursor: pointer;
-    padding: 18px;
-    width: 50%;
+    padding: 11px;
+    width: 33%;
     border: none;
-    text-align: left;
+    text-align: center;
     outline: none;
     font-size: 15px;
+
   }
 
-  #breweryDetails{
-      background-color: white;
-      width: 45%;
-      float: left;
-      opacity: 80%;
-      margin-right: 4px;
-      border-radius:1rem;
-     
-      
-      
-     
+#breweryDetails {
+    display: none;
+    background-color:rgb(230, 184, 132);
+    width: 50%;
+    float: left;
+    opacity: 80%;
+    height: 300px;
+    margin-bottom: 35px;
+    border-radius:1rem;
+    text-align: center;
   }
-  #breweryTourListDiv{
-      background-color: white;
-      width: 45%;
-      float: right;
-      padding: 60px;
-      margin-right: 25px;
-      display: flex;
-      height: 122px;
-      display: none;
-      margin-bottom: 24px;
-      opacity: 80%;
-      border-radius:1rem;
-      
-      
-      
+
+#breweryTourListDiv {
+    display: none;
+    background-color: white;
+    width: 50%;
+    float: left;
+    opacity: 80%;
+    height: 300px;
+    margin-bottom: 35px;
+    border-radius:1rem;
+    text-align: center;
   }
-button{
-    
+
+#breweryTourList {
+    text-align: left;
+}
+
+button {
     border-radius: 10rem;
     margin-bottom: 2px;
-    
-    
 }
 
-.btn{
- background-color: red;
- margin-left: 38%;
- width:30%
-
-
-
+.addToTourButton {
+    background-color: white;
 }
-      
+
+.newSearchButton {
+    background-color: rgb(19, 122, 62);
+    height: auto;
+}
+
+.generateMapButton {
+    background-color: rgb(230, 184, 132);
+    height: auto;
+}
+
+.tryAgainButton {
+    background-color: rgb(238, 214, 183);
+    height: 100px;
+    text-align: center;
+}
 
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {
@@ -187,6 +211,7 @@ button{
     margin: 0;
     float: left;
   }
+  
   #right-panel {
     display: flex;
     background-color: white;
@@ -209,17 +234,81 @@ button{
     vertical-align: 60px;
     position: absolute;
     top:calc(24vh - 100px);
-
   }
 
   #infoWindowContent p {
       color:black;
-  }
+      background-color: white;
 
+  }
   #mapSection {
       display:none;
+      text-align: center;
   }
-  input{
+
+  input {
       border-radius: 1rem;
+      padding: 13px;;
   }
+
+ #breweryBadgeBoard {
+    display: none;
+    height: auto;
+    text-align: center;
+}
+
+.breweryBadgeDetails {
+    margin-right: 20px;
+    background-image: url(https://i.gifer.com/wmp.gif);
+    border-radius: 2rem;
+    width: 100px;
+    opacity: 75%;
+    border-radius: 2rem;
+}
+
+#breweryBadgeHeader h1 {
+    color: white;
+    font-size: 45px;
+}
+
+#breweryBadgeHeader {
+    display: none;
+}
+
+#tryAgainSection {
+    display: none;
+    border-radius: 2rem;
+    color: white;
+    margin: 5px;
+    background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg);
+}
+
+.tryAgainButton:hover {
+    background-image: url(https://i.gifer.com/wmp.gif);
+}
+
+#tryAgainSection h1 {
+    color: white;
+}
+
+  @media only screen and (max-width: 611px) {
+    #breweryTourListDiv, #breweryDetails {
+      height: 400px;
+      overflow: auto;
+    }
+  }
+
+  @media only screen and (max-width: 611px) {
+    #breweryDetails p, #breweryDetails a  {
+    background-color: rgb(230, 184, 132);  
+    color: black;  
+    }
+  }
+
+  @media only screen and (max-width: 611px) {
+    .collapsible {
+        width: 50%; 
+    }
+  }
+  
 

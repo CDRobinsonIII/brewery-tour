@@ -10,60 +10,81 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Xanh+Mono&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lobster&display=swap" rel="stylesheet"> 
     <!-- Ajax Link -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- Google API Link -->
     <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
-      defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCJPOMSrLasnciceElteYDrtiH10CJhbdY&callback=initMap&libraries=&v=weekly"
+        defer
     ></script>
     <!-- CSS Link -->
     <link rel="stylesheet" href="./style.css">
     
 
-    <title>Brewery Tour</title>
+    <title>Brewery Tasting Tour</title>
 </head>
 
 <body>
 
     <!--Jumbotron for Title-->
-    <div class=" container mt-4 text-center p-2 title">
-        <h1> <strong>Brew Bro's Tour</strong></h1>
-        <p><strong>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.
-                Enter the city where you would like to find breweries to visit.
-                Pick from the breweries generated and add them to your map.
-                Lastly, send the directions to your designated driver and wait for your ridde to arrive.</strong></p>
-        
+    <div class="title">
+        <h1>The Brewway</h1>
+        <div class = "companyDetails">
+            <p>A self-guided brewery tasting tour generator aimed to please your sophisticated beer buds.</p>
+            <p>Enter the city where you would like to find breweries to visit.</p>
+            <p>Pick from the list of breweries generated and add the ones you like to your tasting map.</p>
+            <p>Lastly, send the directions to your designated driver and wait for your ride to arrive.</p>
+        </div>
         <input type="text" placeholder="Input City" id="city" class="input">
-        <button type="button" id="search">Lets Go!</button>
+        <button type="button" id="search">Let's Go!</button>
     </div>
 
-    <!-- container for search breweries -->
-    <div class="container">
-        <div class="row">
-            <div class="col" id="dbrewerieslist">
-                <h2>Breweries found:</h2>
-            <!-- Brewery details displayed on the left. -->
-            <div class="col" id="breweryDetails"></div>
-           
-            <!-- Brewery tasting tour list. -->
-            <div class="col" id="breweryTourListDiv" >
-                <h3>Brewery Tasting Tour List</h3>
-                <ul id="breweryTourList">
-                </ul>
-                <button class="btn btn-warning" id="generateMap">Generate Map</button>
-            </div>
+    <!-- container for search breweries -->>
+    <div> 
+        <!-- Brewery details displayed on the left. -->
+        <div id="breweryDetails">
+
+        </div>
+        
+        <!-- Brewery tasting tour list. -->
+        <div id="breweryTourListDiv" >
+            <h1>Brewery Tasting Tour List</h3>
+            <ul id="breweryTourList">
+
+            </ul>
+            <button class="generateMapButton" id="generateMap">Generate Map</button>
+        </div>
+
+        <!-- List the breweries here that are returned by the API call. -->
+        <div id="dbrewerieslist">
+            <h2>Click on the brewery buttons for more details. Add up to 5 different breweries to your brewery tasting tour list.</h2>
+        </div>
+    </div>
+
+    <div id="breweryBadgeHeader">
+        <h1>Breweries Visited Wall</h1>
+    </div>
+
+    <div id="breweryBadgeBoard">
+    </div>
+
+    <!-- Display this when Open Brewery API returns 0 results. -->
+    <div id="tryAgainSection"> 
+        <h1>Sorry to have to tell you, but your search resulted in ZERO breweries. Please try again!</h1>  
+        <div>
+            <img src="BeerMe_Coaster.png">
+            <button class="tryAgainButton" id="tryAgainPlease">Try again!</button>
         </div>
     </div>
 
     <!-- Map container to hold map and directions panel. Need to figure out how and when to display this.  -->
-    <div class="container" id="mapSection"> 
-        <div class="col" id="map"></div> 
-        <div class="col" id="right-panel"></div>   
+    <div id="mapSection"> 
+        <div id="map"></div> 
+        <div id="right-panel"></div>   
         <div>
-            <button class="btn btn-warning" id="newSearch">Start New Search</button>
+            <button class="newSearchButton" id="newSearch">Start New Search</button>
         </div>
     </div> 
    
