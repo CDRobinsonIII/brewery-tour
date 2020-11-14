@@ -183,6 +183,12 @@ button {
     height: auto;
 }
 
+.tryAgainButton {
+    background-color: rgb(238, 214, 183);
+    height: 100px;
+    text-align: center;
+}
+
   /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .active, .collapsible:hover {
     background-color: rgb(252, 243, 243);
@@ -269,7 +275,21 @@ button {
     display: none;
 }
 
+#tryAgainSection {
+    display: none;
+    border-radius: 2rem;
+    color: white;
+    margin: 5px;
+    background-image: url(https://mountainx.com/wp-content/uploads/2015/05/asheville-beer-sampler.jpg);
+}
 
+.tryAgainButton:hover {
+    background-image: url(https://i.gifer.com/wmp.gif);
+}
+
+#tryAgainSection h1 {
+    color: white;
+}
 
   @media only screen and (max-width: 611px) {
     #breweryTourListDiv, #breweryDetails {

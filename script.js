@@ -107,14 +107,26 @@ $("#search").on("click", function (c) {
 
     // Timer to wait half of a second before the following code is processed. It fixed our timing issues. 
     setTimeout(() => {
-      //Renders the breweries on the screen as buttons with on click events.
-      for (i = 0; i < breweryList.length; i++) {
-        breweryBtn = $("<button>");
-        breweryNameToAdd = breweryList[i].name;
-        var breweryName = breweryBtn.addClass("collapsible").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
-        $("#dbrewerieslist").append(breweryName);
+
+      if (breweryList.length !== 0) {
+        //Renders the breweries on the screen as buttons with on click events.
+        for (i = 0; i < breweryList.length; i++) {
+          breweryBtn = $("<button>");
+          breweryNameToAdd = breweryList[i].name;
+          var breweryName = breweryBtn.addClass("collapsible").text(breweryNameToAdd).attr("id", `${i}`).on("click", displayBreweryDetails);
+          $("#dbrewerieslist").append(breweryName);
+        }
+      }
+
+      // If Open Brewery API returns no results, let user know.
+      else {
+        $("#dbrewerieslist").css("display","none");
+        $("#tryAgainSection").css("display","block");
+        $("#breweryBadgeHeader").css("display","none");
+        $("#breweryBadgeBoard").css("display","none");
       }
     }, 500);
+    
   }
 
   // Returns to city search input if user didn't input a city.
@@ -164,7 +176,7 @@ function addBreweriesToTourToWayPointArray(event) {
       name: breweryNameToAdd
     };
 
-    // Push to local stroage array.
+    // Push to local storage array.
     breweriesVisited.push(addBreweryToLocalStorageArray);
 
   }
@@ -402,3 +414,8 @@ function renderBreweriesVisited () {
 // Call function to show visited breweries that are in local storage on start page under city search input.
 renderBreweriesVisited();
 
+
+  // On click event for when the user clicks on try again search button.
+  $("#tryAgainPlease").on("click", function () {
+    location.reload();
+  });
