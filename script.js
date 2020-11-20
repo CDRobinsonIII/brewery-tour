@@ -17,7 +17,7 @@ var breweriesVisited = [];
 // Function to use Open Brewery DB API to get a list of breweries based on the city inputed by the user. 
 // All breweries meeting the search criteria will be stored in the global breweryList var. 
 function getBreweryList() {
-  var UserCityInput = $("#city").val();
+  var UserCityInput = $("#city").val().trim();
 
   // The encodeURIComponent method replaces any spaces in the city name with the correct URL code for a space (%20). 
   // Open Brewery DB doesn't allow spaces in their search terms.
@@ -83,7 +83,7 @@ function getBreweryList() {
 // It called the get breweries function and renders the breweries on the screen as buttons with on click events.
 $("#search").on("click", function (c) {
   c.preventDefault();
-  var whatCity = $("#city").val();
+  var whatCity = $("#city").val().trim();
 
   // Makes sure the city input isn't empty. If it is, the return returns to the input field. 
   if (whatCity !== "") {
@@ -98,11 +98,9 @@ $("#search").on("click", function (c) {
 
     $("#dbrewerieslist").fadeIn().css("display", "block");
 
-    var whatCity = $("#city").val();
-
     // Call getBreweryList function to get list of breweries based off of id search.
     // There were some timing issues with the AJAX call, so we implemented a timer to delay the processing of the code that followed the AJAX.
-    // This tip was provide to possible get around the timing issue, we never go around to trying ==> this function must return a promise then you do .then(() => {wrap the code here})d
+    // This tip was provide to possibly get around the timing issue, we never got around to trying ==> this function must return a promise then you do .then(() => {wrap the code here})d
     getBreweryList();
 
     // Timer to wait half of a second before the following code is processed. It fixed our timing issues. 
@@ -125,7 +123,7 @@ $("#search").on("click", function (c) {
         $("#breweryBadgeHeader").css("display","none");
         $("#breweryBadgeBoard").css("display","none");
       }
-    }, 500);
+    }, 1250);
     
   }
 
